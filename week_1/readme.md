@@ -64,3 +64,38 @@ python check_env.py
 python agent_test.py --prompt "What's the weather in Dublin today?"
 --- Used provider: GROQ ---
 (Produces detailed natural language response)
+
+
+
+
+## 🚀 Day 2: Agent Architecture & Prompt Chaining
+
+### 🎯 Objective
+Implement a multi-step **agent pipeline** capable of decomposing a high-level goal into structured subtasks, executing them sequentially with LLM reasoning, and synthesizing all results into a final actionable plan.
+
+### 🧠 Key Tasks Completed
+1. **Created `agent_chain.py`** – the main agent script.
+2. **Implemented 3-stage workflow:**
+   - **Plan:** break a user goal into 5-10 subtasks.  
+   - **Execute:** process each subtask independently using the selected LLM provider.  
+   - **Synthesize:** merge all intermediate outputs into a structured final report.
+3. **Integrated LLM provider routing** (Groq → HF → Ollama) with automatic fallback.
+4. **Validated full pipeline** using the prompt:  
+   > `"Design a lead-qualifier AI micro-SaaS for small e-commerce stores"`
+5. **Tested end-to-end flow** — observed correct subtask generation, independent reasoning per subtask, and consolidated synthesis output.
+
+### ⚙️ Technical Outcomes
+- ✅ Modular architecture (`plan_task`, `execute_subtasks`, `synthesize_output`)
+- ✅ Working multi-provider routing via `.env`
+- ✅ No runtime or API errors
+- ✅ Full reasoning trace displayed in terminal
+- ✅ Business-structured final report generated automatically
+
+### 🧩 Skills Strengthened
+- Prompt-chaining logic (similar to LangChain / CrewAI)
+- LLM I/O structuring and context management
+- Multi-model API handling and fallback mechanisms
+- Practical understanding of reasoning + synthesis loops
+
+### 📄 Next Step
+Proceed to **Day 3: Tool Integration** — adding utility modules (e.g., Google Search, file writer, or math calculator) so that the agent can reason *and act*.
