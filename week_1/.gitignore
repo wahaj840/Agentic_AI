@@ -1,0 +1,17 @@
+# Virtual environments
+.venv/
+week_1/.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Secrets
+.env
+week_1/.env
+
+# Editor/OS
+.vscode/
+.DS_Store
+*.log
