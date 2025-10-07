@@ -103,3 +103,18 @@ Implement a multi-step **agent pipeline** capable of decomposing a high-level go
 ### 🧩 Example Run
 ```bash
 python agent_chain.py --prompt "Design a lead-qualifier AI micro-SaaS for small e-commerce stores"
+
+
+--- Used provider: GROQ ---
+📋 PLAN:
+  1. Conduct market research to identify target audience needs and pain points.
+  2. Define the key features for the AI-powered lead qualifier.
+  3. Design a user-friendly interface.
+  4. Develop a machine learning model.
+  5. Plan the technical infrastructure for deployment and scalability.
+
+⚙️ Subtask 1: Conduct market research...
+⚙️ Subtask 2: Define key features...
+...
+🧩 SYNTHESIS:
+✅ Final summarized business plan generated successfully!
