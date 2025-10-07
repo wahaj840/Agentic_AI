@@ -118,3 +118,51 @@ python agent_chain.py --prompt "Design a lead-qualifier AI micro-SaaS for small 
 ...
 🧩 SYNTHESIS:
 ✅ Final summarized business plan generated successfully!
+
+
+---
+
+## 🚀 Day 3: Tool Integration & Smart Routing
+
+### 🎯 Objective
+Expand the agent’s capabilities by integrating **external tools** (Search / Math / File Writer) and enabling it to **decide automatically** whether to call a tool or perform reasoning through the existing chain.
+
+---
+
+### ⚙️ Key Tasks Completed
+
+| Task | Description | Status |
+|------|--------------|--------|
+| **Tool Detection Logic** | Implemented `looks_like_tool_request()` to auto-detect when a prompt requires a tool (e.g. "search", "save", math expressions). | ✅ |
+| **Tool Router (`use_tools`)** | Added central router to delegate queries to `search_web`, `solve_math`, or `write_to_file`. | ✅ |
+| **Math Tool** | Performs safe calculations (e.g. `23 * 7 + 12 → 173`). | ✅ |
+| **Search Tool** | Simulates web search results (`[Tool: Search] Simulated web search…`). | ✅ |
+| **File Writer Tool** | Saves generated content to `outputs/agent_output.txt` with success confirmation. | ✅ |
+| **Argument Parser Update** | Added `--prompt` (required) and `--act` (optional) flags to `main()`. | ✅ |
+| **Smart Router Decision Flow** | Routes to either tool mode or reasoning chain based on prompt. | ✅ |
+| **Full System Validation** | Successfully tested end-to-end scenarios for Reasoning and Tool modes. | ✅ |
+
+---
+
+### 🧪 Verification Results
+
+```bash
+# Reasoning chain
+python agent_chain.py --prompt "Design a lead-qualifier AI micro-SaaS for small e-commerce stores"
+# ✅ Produced multi-step plan, executed subtasks, and merged final report.
+
+# Web search (tool mode)
+python agent_chain.py --prompt "search latest AI tools 2025"
+# → [Tool: Search] Simulated web search results for 'latest AI tools 2025'
+
+# Math (tool mode)
+python agent_chain.py --prompt "23 * 7 + 12"
+# → The result of 23 * 7 + 12 is 173
+
+# File write (tool mode)
+python agent_chain.py --prompt "save this summary"
+# → [Tool: File Writer] Content saved successfully → outputs\agent_output.txt
+
+# Force tool mode
+python agent_chain.py --act --prompt "search Mistral vs Llama benchmarks"
+# → [Tool: Search] Simulated web search results for 'Mistral vs Llama benchmarks'
